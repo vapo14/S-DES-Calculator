@@ -1,0 +1,39 @@
+form {
+  padding: 15px;
+}
+
+input {
+  display: block;
+}
+
+input {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: rgb(221, 221, 221) solid 1px;
+}
+
+input:hover:focus,
+textarea:focus {
+  border-color: rgb(201, 201, 201);
+}
+
+button {
+  margin: 10px;
+  border-radius: 10%;
+  border: 1px rgb(0, 192, 74) solid;
+  padding: 10px;
+  min-width: 70px;
+  background-color: #00d684;
+}
+
+button:hover {
+  background-color: #00c278;
+}
+
+.input-form {
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
