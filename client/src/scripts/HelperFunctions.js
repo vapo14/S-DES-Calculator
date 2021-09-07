@@ -97,7 +97,7 @@ const S0Box = (key) => {
   row += key[key.length - 1];
   column += key[1];
   column += key[key.length - 2];
-  temp = (SBox[bin[row]][bin[column]] >>> 0).toString(2);
+  temp = ("00" + SBox[bin[row]][bin[column]].toString(2)).slice(-2);
   return temp;
 };
 
@@ -121,8 +121,7 @@ const S1Box = (key) => {
   row += key[key.length - 1];
   column += key[1];
   column += key[key.length - 2];
-  temp = SBox[bin[row]][bin[column]].toString(2);
-  temp = temp === "0" ? temp + "0" : temp;
+  temp = ("00" + SBox[bin[row]][bin[column]].toString(2)).slice(-2);
   return temp;
 };
 
