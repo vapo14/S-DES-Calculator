@@ -11,17 +11,43 @@ const {
 } = require("./HelperFunctions");
 
 const SDES = (plaintext, keys) => {
+  var ciphertext = {};
+  var html = "<h2>Ciphertext Generation</h2>";
+  html += "<br/><br/>";
   var initialPermutation = IP(plaintext);
   console.log("Initial permutation: ", initialPermutation);
+  html +=
+    "<h3>Initial permutation of <i>" +
+    plaintext +
+    ":</i> </h3> <p>" +
+    initialPermutation +
+    "</p>";
+  html += "<br/><br/>";
 
   var split1 = split(initialPermutation);
   console.log("First split: ", split1);
+  html +=
+    "<h3>First split: </h3> <p><b style='margin: 10px'>Left Half:</b> " +
+    split1.leftHalf +
+    "<b style='margin: 10px'>Right Half: </b>" +
+    split1.rightHalf +
+    "</p>";
+  html += "<br/><br/>";
 
   var expandedRight = ExpandPermutate(split1.rightHalf);
   console.log("Expanded right: ", expandedRight);
+  html +=
+    "<h3>Expand and Permutate Right Half <i>" +
+    split1.rightHalf +
+    ":</i></h3><p>" +
+    expandedRight +
+    "</p>";
+  html += "<br/><br/>";
 
   var expandedxor = XOR(expandedRight, keys.key1);
   console.log("After XOR: ", expandedxor);
+  html += "<h3>XOR on Expanded Right Half</h3><p>" + expandedxor + "</p>";
+  html += "<br/><br/>";
 
   var split2 = split(expandedxor);
   console.log("split before sboxes: ", split2);
@@ -54,7 +80,10 @@ const SDES = (plaintext, keys) => {
   var finalPerm = merge(finalxor, xorWithLeft);
   finalPerm = FinalPermutation(finalPerm);
   console.log("Ciphertext: ", finalPerm);
-  return finalPerm;
+
+  ciphertext = { ciphertext: finalPerm, html };
+
+  return ciphertext;
 };
 
 module.exports = { SDES };

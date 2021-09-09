@@ -37,3 +37,13 @@ button:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
+.navBar {
+  -webkit-box-shadow: -4px 3px 36px -25px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 3px 36px -25px rgba(0, 0, 0, 0.75);
+  box-shadow: -4px 3px 36px -25px rgba(0, 0, 0, 0.75);
+  margin-top: 0;
+  min-height: 70px;
+  padding-top: 25px;
+  margin-bottom: 25px;
+}

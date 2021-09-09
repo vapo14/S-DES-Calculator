@@ -22,8 +22,14 @@ function App() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>S-DES Encryption Calculator</h1>
-      <div className="input-form">
+      <h1 style={{ textAlign: "center" }} className="navBar">
+        S-DES Encryption Calculator
+      </h1>
+      <div
+        className="input-form"
+        style={{ position: "fixed", left: "10%", top: "150px" }}
+      >
+        <h2>Inputs: </h2>
         <form onSubmit={runSDES}>
           <label>8-bit Plaintext</label>
           <input
@@ -43,12 +49,17 @@ function App() {
           <button type="submit">Run</button>
         </form>
       </div>
+      <h2 style={{ textAlign: "center" }}>Results:</h2>
+
       <div
         style={{ textAlign: "center" }}
         dangerouslySetInnerHTML={{ __html: KeyGeneration }}
       ></div>
       <div>
-        <h3 style={{ textAlign: "center" }}>Ciphertext: {Ciphertext}</h3>
+        <div
+          style={{ textAlign: "center" }}
+          dangerouslySetInnerHTML={{ __html: Ciphertext.html }}
+        ></div>
       </div>
     </div>
   );
