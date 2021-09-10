@@ -7,17 +7,23 @@ import { validatePlaintext, validateKey } from "./scripts/ValidateInput";
 function App() {
   const [Ciphertext, setCiphertext] = useState("");
   const [KeyGeneration, setKeyGeneration] = useState("");
+  const [Mode, setMode] = useState("ENCRYPT");
 
   const runSDES = (e) => {
     e.preventDefault();
     let plaintext = e.target[0].value;
     let key = e.target[1].value;
     if (validatePlaintext(plaintext) && validateKey(key)) {
-      setCiphertext(SDES(plaintext, generateKeys(key)));
+      setCiphertext(SDES(plaintext, generateKeys(key), Mode));
       setKeyGeneration(generateKeys(key).html);
     } else {
       console.log("invalid text");
     }
+  };
+
+  const handleMode = (e) => {
+    console.log(Mode);
+    setMode(Mode === "ENCRYPT" ? "DECRYPT" : "ENCRYPT");
   };
 
   return (
@@ -46,20 +52,28 @@ function App() {
               placeholder="10-bit Binary Key"
             ></input>
           </div>
+          <div style={{ marginTop: "40px", display: "flex" }}>
+            <input type="checkbox" onChange={handleMode}></input>
+            <label style={{ paddingTop: "8px" }}>Decrypt</label>
+          </div>
           <button type="submit">Run</button>
         </form>
+        <h2>Ciphertext: {Ciphertext.ciphertext}</h2>
       </div>
       <h2 style={{ textAlign: "center" }}>Results:</h2>
-
-      <div
-        style={{ textAlign: "center" }}
-        dangerouslySetInnerHTML={{ __html: KeyGeneration }}
-      ></div>
-      <div>
+      <div style={{ display: "flex", marginLeft: "30%" }}>
         <div
-          style={{ textAlign: "center" }}
-          dangerouslySetInnerHTML={{ __html: Ciphertext.html }}
+          style={{ textAlign: "center", margin: "50px" }}
+          dangerouslySetInnerHTML={{ __html: KeyGeneration }}
+          className="fade-in"
         ></div>
+        <div>
+          <div
+            className="fade-in"
+            style={{ textAlign: "center", margin: "50px" }}
+            dangerouslySetInnerHTML={{ __html: Ciphertext.html }}
+          ></div>
+        </div>
       </div>
     </div>
   );

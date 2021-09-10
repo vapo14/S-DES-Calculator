@@ -62,7 +62,7 @@ const generateKeys = (key) => {
     finalKeys.key1 +
     "<b style='margin: 10px'>Key 2: </b>" +
     finalKeys.key2 +
-    "</p><hr style='width: 60%; margin-top: 50px; margin-bottom: 50px'>";
+    "</p><hr style='width: 50%; margin-top: 50px; margin-bottom: 50px'>";
   finalKeys.html = html;
   return finalKeys;
 };
