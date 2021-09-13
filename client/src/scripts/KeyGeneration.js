@@ -2,6 +2,7 @@ const { P10, P8, merge, split, leftShift } = require("./HelperFunctions");
 
 const generateKeys = (key) => {
   var html = "<h2>Key Generation</h2>";
+  html += "<br/>";
   var finalKeys = { key1: "", key2: "", html };
   var p10 = P10(key);
   console.log("p10: ", p10);

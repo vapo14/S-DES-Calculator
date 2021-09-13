@@ -59,6 +59,12 @@ function App() {
           <button type="submit">Run</button>
         </form>
         <h2>Ciphertext: {Ciphertext.ciphertext}</h2>
+        <p>
+          More about{" "}
+          <a href="http://mercury.webster.edu/aleshunas/COSC%205130/G-SDES.pdf">
+            S-DES Encryption Algorithm{" "}
+          </a>{" "}
+        </p>
       </div>
       <h2 style={{ textAlign: "center" }}>Results:</h2>
       <div style={{ display: "flex", marginLeft: "30%" }}>
@@ -67,13 +73,11 @@ function App() {
           dangerouslySetInnerHTML={{ __html: KeyGeneration }}
           className="fade-in"
         ></div>
-        <div>
-          <div
-            className="fade-in"
-            style={{ textAlign: "center", margin: "50px" }}
-            dangerouslySetInnerHTML={{ __html: Ciphertext.html }}
-          ></div>
-        </div>
+        <div
+          className="fade-in"
+          style={{ textAlign: "center", margin: "50px" }}
+          dangerouslySetInnerHTML={{ __html: Ciphertext.html }}
+        ></div>
       </div>
     </div>
   );
